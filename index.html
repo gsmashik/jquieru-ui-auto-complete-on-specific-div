@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+#ui-id-1 {
+  display: none !IMPORTANT;
+}
+
+#mycontainer {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 250px;
+}
+
+#mycontainer li {
+  background: white;
+  border-bottom: 1px solid #EEE;
+  padding: 5px;
+  cursor: pointer;
+}
+
+#mycontainer li:hover {
+  background: #EEE;
+}
+.ui-helper-hidden-accessible{display: none !important;}
+    </style>
+</head>
+<body>
+        <input type="text" id="keyword" placeholder="type here">
+        <ul id="mycontainer">
+        </ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+  <script>
+
+   
+
+var keywordlist = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    
+$("#keyword").autocomplete({
+    source:keywordlist
+}).keyup(function(){
+    $('#mycontainer').html('');
+
+});
+$('#ui-id-1').on('DOMSubtreeModified', function() {
+  $('#mycontainer').html($('#ui-id-1').html());
+//   $('#mycontainer').dialog();
+  $("#mycontainer").css("border","black solid 1px");
+
+});
+
+$('#mycontainer').on('click', 'li', function() {
+	$('#keyword').val($(this).text())
+  $('#mycontainer').html('');
+  $("#mycontainer").css("border","none");
+
+
+});
+$(".ui-helper-hidden-accessible").html("");
+  </script>
+</body>
+</html>
+
+
+
